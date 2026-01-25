@@ -1,11 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=word.html">
-    <title>Redirecting...</title>
-</head>
-<body>
-    <p>正在跳转到课程页面... 如果没有自动跳转，请<a href="word.html">点击这里</a>。</p>
-</body>
-</html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>硅谷可控大模型智能体AI技术 </title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body {
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(0, 242, 255, 0.18), rgba(0, 0, 0, 0) 55%),
+        radial-gradient(1200px 800px at 85% 20%, rgba(188, 19, 254, 0.16), rgba(0, 0, 0, 0) 60%),
+        radial-gradient(900px 700px at 40% 90%, rgba(0, 242, 255, 0.10), rgba(0, 0, 0, 0) 60%),
+        #05060b;
+      color: rgba(238, 242, 255, 0.92);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)),
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: auto, 44px 44px, 44px 44px;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+      transform: translateZ(0);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -30%;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.08), rgba(0, 0, 0, 0) 60%);
+      filter: blur(30px);
+      opacity: 0.7;
+      transform: translateZ(0);
+    }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      position: relative;
+      counter-reset: section;
+    }
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 20px 12px;
+      border-radius: 28px;
+      background: rgba(12, 14, 22, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      z-index: -1;
+    }
+    p {
+      margin: 0 0 12px;
+      white-space: pre-wrap;
+    }
+    img {
+      max-width: 600px;
+      height: auto;
+      display: block;
+      margin: 16px auto 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 16px 55px rgba(0, 0, 0, 0.65);
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    td, th {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 8px 12px;
+      vertical-align: top;
+    }
+    ul, ol {
+      margin: 0 0 12px 24px;
+      padding: 0;
+    }
+    strong {
+      color: rgba(255, 255, 255, 0.96);
+    }
+    .page > p.title {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .page > p.title strong {
+      font-size: 30px;
+      letter-spacing: 0.6px;
+      text-shadow: 0 0 18px rgba(0, 242, 255, 0.25);
+    }
+    .page > p.subtitle {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+    .page >
