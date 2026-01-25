@@ -17,3 +17,4 @@ Based on "硅谷可控大模型智能体AI技术" (Silicon Valley Controllable L
 ## Note on Images
 Since direct image extraction from the source URL requires browser access, I have used **FontAwesome** icons and CSS gradients to maintain a high-quality, professional look without broken image links. You can easily replace the icons with actual screenshots or photos in the `index.html` file if desired.
 # AI_Agent_Course
+https://ai-agent-course-pearl.vercel.app/
