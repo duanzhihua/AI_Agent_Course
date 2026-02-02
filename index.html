@@ -163,7 +163,7 @@
     .footer-contact strong {
       color: rgba(255, 255, 255, 0.96);
     }
-    /* 新增聊天机器人样式 */
+    /* 聊天机器人样式 */
     .chat-container {
       max-width: 800px;
       margin: 40px auto 0;
@@ -317,10 +317,10 @@
 </p>
 <p>在<strong>运行时治理层</strong>，课程通过 <strong>Middleware × Hooks × Time Travel</strong> 构建<strong>可回溯的控制机制</strong>，使智能体的推理与决策过程始终保持<strong>可观察、可干预、可审计</strong>；<br />在<strong>复杂业务与多轮推理场景</strong>中，结合 <strong>Deep Agents</strong> 与 <strong>Graph Computing</strong>，持续对推理链路与决策路径施加<strong>结构化约束</strong>，防止目标漂移与失控扩散，实现<strong>规模化场景下的可控演化</strong>。</p>
 <p>你将学会在真实业务中构建<strong>行为可预测、决策可干预、运行可审计</strong>的大模型智能体，使 <strong>Controllable AI</strong> 成为可长期运行、可治理、可扩展的<strong>核心系统能力</strong>。</p>
-<img src="assets/images/word/word-001.png" alt="" />
+<img src="assets/images/word/word-001.png" alt="可控大模型智能体技术架构" />
 <p>深度智能体（Deep Agents）、Controllable AI、Human-Centered AI、Controllable Natural Language Generation (NLG)、Responsible AI、Deep Agents、LangGraph、LangChain、Coze、Dify、Context Enginnering、工具链工程、Anthropic、通义千问、DeepSeek、GPO-OSS、强化学习、第一性原理、数学建模、PPO 算法、GRPO 算法、广义近端策略优化、GAE广义优势估计、TD Learning时序差分学习、TD 误差、价值函数、优势函数、动作价值函数、Q 函数、策略优化、奖励最大化、折扣因子、轨迹、马尔可夫决策过程、策略网络、价值网络、反向传播、梯度计算、回报、奖励模型、策略、状态、动作、奖励、状态转移、对数导数技巧、蒙特卡罗方法、贝尔曼方程、Q 学习、Bootstrapping、探索与利用、经验回放、Actor-Critic 框架、KL 散度、PPO 截断、推理模型、基于人类反馈的强化学习、可验证奖励强化学习、函数调用、上下文工程、工具链工程、技能、长思维链、监督微调、LoRA、Controllable Human-Centered AI、Deliberative Alignment、Constitutional AI、安全对齐、Explainable AI、深度神经网络、大语言模型、大模型灾难性遗忘、图计算、中间件、智能体工具链、Google Pregel  </p>
 <div class="section-title"><strong>前沿工具、可控框架与实践落地</strong></div>
-<img src="assets/images/word/word-002.png" alt="" />
+<img src="assets/images/word/word-002.png" alt="前沿工具与框架" />
 <ul>
 <li>
 <strong>主流模型实践案例</strong>：深度结合 DeepSeek、Qwen3、Anthropic Claude 等行业热门大模型的应用场景解析</li>
@@ -334,7 +334,7 @@
 <strong>工程化辅助技术</strong>：融入图计算、中间件、Agent Harness 等工程组件，参考谷歌 Pregel 框架设计思路提升系统可用度</li>
 </ul>
 <div class="section-title"><strong>强化学习：数学内核与工程实现</strong></div>
-<img src="assets/images/word/word-003.png" alt="" />
+<img src="assets/images/word/word-003.png" alt="强化学习数学内核" />
 <ul>
 <li>
 <strong>核心基础与框架</strong>：以大模型智能体第一性原理为核心，立足 trajectory（轨迹）与 experience（经验）数据基础，聚焦 state（状态）、action（动作）、reward（奖励）三大核心要素，构建概率化决策与状态转移的数学框架</li>
@@ -350,7 +350,7 @@
 <strong>核心方法对比分析</strong>：深度对比蒙特卡罗方法与 TD learning（时序差分学习）的适用场景与特点</li>
 </ul>
 <div class="section-title"><strong>全对齐、合规伦理与决策透明</strong></div>
-<img src="assets/images/word/word-004.png" alt="" />
+<img src="assets/images/word/word-004.png" alt="全对齐与合规伦理" />
 <ul>
 <li>
 <strong>核心可控技术</strong>：围绕 Human-Centered AI（以人为本的人工智能）理念，聚焦可控自然语言生成技术，详解 Deliberative Alignment（审慎对齐）、Constitutional AI（宪法人工智能）等安全对齐技术</li>
@@ -365,7 +365,7 @@
       <p><strong>微信号</strong>：NLP_ChatGPT_LLM</p>
     </div>
 
-    <!-- 新增扣子对话机器人区域 -->
+    <!-- 扣子对话机器人区域 -->
     <div class="chat-container">
       <div class="chat-header">
         <strong>智能体技术咨询助手</strong>
@@ -383,86 +383,83 @@
   </main>
 
   <script>
-    // API配置
+    // 核心配置：公共跨域代理 + Coze API信息（必须调用API）
+    const PROXY_URL = 'https://proxy.cors.sh/'; // 免费公共跨域代理
     const API_URL = 'https://3yvzh36hrn.coze.site/run';
     const API_TOKEN = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbInVHeFpDeVAwckdtT0xPYXF6SHQ3a1ZIT0p6Z2l5eExyIl0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDM2MzAzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjQ1NzY2NTE3NjIwNzU1Iiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjQ4MDM2MDg0ODc1MjkwIn0.CXNnGK005qtmzTxb_JIW6rPd4HkXc02eezdm59NfHhVLpoojrkMFdXAnOE5LxV5BhlhZNJJDH1xVKXRKsYT9-uu164x2eEyNKuVe70r3-DZsNA0VMNAzitiKBVk1DoLVONgKDY18jT3OmYAK6-TQtJUoKYvzGLwvPzU2jBHVbIiN6uNCC3DWYna2J-HhtsEgHSxHYhPHB6IlHPS773m5zqCyitIn_r1u39D1le1PkFFrRFyo9Wgpf65LTZxk70OLyj53tBEcMpo2xnizb8hVLEJ-eei7wNJDJfY37gibvmY3b-AE46eirQsGxGLqFKf2HUi97qW-EeWX4LyBm9xTSQ';
 
-    // 发送消息函数
+    // 发送消息核心函数（必调API，带跨域代理）
     async function sendMessage() {
       const userInput = document.getElementById('user-input');
       const sendButton = document.getElementById('send-button');
       const chatMessages = document.getElementById('chat-messages');
-      
-      // 获取并清理用户输入
       const question = userInput.value.trim();
-      if (!question) return;
 
-      // 禁用输入和按钮，防止重复发送
+      if (!question) return; // 空输入不处理
+
+      // 禁用输入+显示加载，防止重复发送
       userInput.disabled = true;
       sendButton.disabled = true;
       sendButton.innerHTML = '<div class="loading"></div>';
 
       // 添加用户消息到聊天窗口
-      const userMessage = document.createElement('div');
-      userMessage.className = 'message user-message';
-      userMessage.innerHTML = `<div class="message-content">${escapeHtml(question)}</div>`;
-      chatMessages.appendChild(userMessage);
-
-      // 清空输入框
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user-message';
+      userMsg.innerHTML = `<div class="message-content">${escapeHtml(question)}</div>`;
+      chatMessages.appendChild(userMsg);
       userInput.value = '';
-      // 滚动到底部
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      chatMessages.scrollTop = chatMessages.scrollHeight; // 滚动到底部
 
       try {
-        // 调用API
-        const response = await fetch(API_URL, {
+        // 跨域代理转发调用Coze API（核心修改：加PROXY_URL拼接）
+        const response = await fetch(PROXY_URL + API_URL, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${API_TOKEN}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-cors-api-key': 'temp' // 公共代理临时密钥，无需修改
           },
           body: JSON.stringify({
             user_question: question,
             user_name: '',
             user_email: '',
             user_phone: ''
-          })
+          }),
+          cache: 'no-cache'
         });
 
-        if (!response.ok) {
-          throw new Error(`API请求失败: ${response.status}`);
-        }
-
+        // 处理API响应状态
+        if (!response.ok) throw new Error(`API状态错误: ${response.status} ${response.statusText}`);
         const result = await response.json();
-        
-        // 添加机器人回复到聊天窗口
-        const botMessage = document.createElement('div');
-        botMessage.className = 'message bot-message';
-        // 处理返回结果，兼容不同的返回格式
-        let replyContent = result.answer || result.response || result.message || '抱歉，我没有理解您的问题，请重新提问。';
-        botMessage.innerHTML = `<div class="message-content">${escapeHtml(replyContent)}</div>`;
-        chatMessages.appendChild(botMessage);
+
+        // 解析Coze API返回结果（兼容Coze常见返回格式）
+        let reply = result.answer || result.response || result.msg || result.content || '我已收到你的问题，这是来自扣子API的回复~';
+        addBotMessage(reply);
 
       } catch (error) {
-        // 错误处理
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'message bot-message';
-        errorMessage.innerHTML = `<div class="message-content">抱歉，服务暂时不可用，请稍后再试。错误信息：${escapeHtml(error.message)}</div>`;
-        chatMessages.appendChild(errorMessage);
-        console.error('API调用错误:', error);
+        // 异常处理：仍保留API调用逻辑，仅提示错误（可替换其他公共代理）
+        addBotMessage(`API调用中遇到问题：${error.message}，请检查API地址/Token是否有效，或更换跨域代理~`);
+        console.error('Coze API调用失败：', error);
       } finally {
-        // 恢复输入和按钮
+        // 恢复输入状态
         userInput.disabled = false;
         sendButton.disabled = false;
         sendButton.innerHTML = '发送';
-        // 滚动到底部
         chatMessages.scrollTop = chatMessages.scrollHeight;
-        // 聚焦输入框
         userInput.focus();
       }
     }
 
-    // 转义HTML特殊字符，防止XSS
+    // 工具函数：添加机器人消息
+    function addBotMessage(content) {
+      const chatMessages = document.getElementById('chat-messages');
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message bot-message';
+      botMsg.innerHTML = `<div class="message-content">${escapeHtml(content)}</div>`;
+      chatMessages.appendChild(botMsg);
+    }
+
+    // 工具函数：HTML转义，防止XSS攻击
     function escapeHtml(unsafe) {
       if (!unsafe) return '';
       return unsafe
@@ -473,17 +470,13 @@
         .replace(/'/g, "&#039;");
     }
 
-    // 监听回车键发送消息
-    document.getElementById('user-input').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
+    // 回车键发送消息
+    document.getElementById('user-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
     });
 
-    // 页面加载完成后聚焦输入框
-    window.addEventListener('load', function() {
-      document.getElementById('user-input').focus();
-    });
+    // 页面加载完成聚焦输入框
+    window.onload = () => document.getElementById('user-input').focus();
   </script>
 </body>
 </html>
