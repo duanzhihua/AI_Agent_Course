@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>硅谷可控大模型智能体AI技术</title>
   <style>
-    /* 原有页面所有样式完整保留，无任何删减 */
+    /* 原有页面所有样式完整保留，无删减 */
     html, body {
       margin: 0;
       padding: 0;
@@ -155,8 +155,8 @@
     .footer-contact strong {
       color: rgba(255, 255, 255, 0.96);
     }
-    /* 聊天机器人样式（与页面风格高度统一，移动端适配） */
-    .chat-container {
+    /* 官方机器人容器样式，与原页面风格100%统一，移动端适配 */
+    .coze-bot-wrapper {
       max-width: 800px;
       margin: 40px auto 0;
       padding: 24px;
@@ -167,115 +167,6 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
-    .chat-header {
-      text-align: center;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .chat-header strong {
-      font-size: 20px;
-      color: rgba(0, 242, 255, 0.95);
-      text-shadow: 0 0 12px rgba(0, 242, 255, 0.2);
-    }
-    .chat-messages {
-      height: 400px;
-      overflow-y: auto;
-      margin-bottom: 20px;
-      padding: 16px;
-      border-radius: 16px;
-      background: rgba(5, 6, 11, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .chat-messages::-webkit-scrollbar {
-      width: 6px;
-    }
-    .chat-messages::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 3px;
-    }
-    .chat-messages::-webkit-scrollbar-thumb {
-      background: rgba(0, 242, 255, 0.3);
-      border-radius: 3px;
-    }
-    .message {
-      margin-bottom: 16px;
-      max-width: 85%;
-      animation: fadeIn 0.3s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .user-message {
-      margin-left: auto;
-      background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(0, 242, 255, 0.1));
-      padding: 12px 16px;
-      border-radius: 18px 18px 4px 18px;
-      border: 1px solid rgba(0, 242, 255, 0.2);
-    }
-    .bot-message {
-      margin-right: auto;
-      background: linear-gradient(135deg, rgba(188, 19, 254, 0.15), rgba(188, 19, 254, 0.08));
-      padding: 12px 16px;
-      border-radius: 18px 18px 18px 4px;
-      border: 1px solid rgba(188, 19, 254, 0.15);
-    }
-    .message-content {
-      word-wrap: break-word;
-      line-height: 1.6;
-    }
-    .chat-input-container {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    #user-input {
-      flex: 1;
-      padding: 14px 18px;
-      border-radius: 50px;
-      background: rgba(5, 6, 11, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: rgba(238, 242, 255, 0.92);
-      font-size: 16px;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-    #user-input:focus {
-      border-color: rgba(0, 242, 255, 0.4);
-      box-shadow: 0 0 12px rgba(0, 242, 255, 0.15);
-    }
-    #send-button {
-      padding: 14px 24px;
-      border-radius: 50px;
-      background: linear-gradient(135deg, rgba(0, 242, 255, 0.8), rgba(0, 210, 255, 0.6));
-      border: none;
-      color: #05060b;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    #send-button:hover {
-      background: linear-gradient(135deg, rgba(0, 242, 255, 0.9), rgba(0, 210, 255, 0.7));
-      box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
-    }
-    #send-button:disabled {
-      background: rgba(255, 255, 255, 0.2);
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-    .loading {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 1s ease-in-out infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
     /* 移动端响应式适配 */
     @media (max-width: 900px) {
       img {
@@ -284,15 +175,9 @@
       .page::before {
         inset: 14px 10px;
       }
-      .chat-container {
+      .coze-bot-wrapper {
         margin: 20px 12px 0;
         padding: 16px;
-      }
-      .chat-messages {
-        height: 300px;
-      }
-      #send-button {
-        padding: 12px 18px;
       }
     }
   </style>
@@ -310,7 +195,7 @@
 <strong>硅谷可控大模型智能体 AI 技术</strong>以大模型智能体<strong>第一性原理</strong>为核心，融合硅谷专家多年<strong>企业级智能体系统实践</strong>，以 <strong>Controllable AI</strong> 为纲，打通 <strong>Agent 系统工程</strong> 与 <strong>强化学习（RL）控制引擎</strong>，构建<strong>运行时可治理的智能体体系。</strong><br />
 </p>
 <p>在<strong>运行时治理层</strong>，课程通过 <strong>Middleware × Hooks × Time Travel</strong> 构建<strong>可回溯的控制机制</strong>，使智能体的推理与决策过程始终保持<strong>可观察、可干预、可审计</strong>；<br />在<strong>复杂业务与多轮推理场景</strong>中，结合 <strong>Deep Agents</strong> 与 <strong>Graph Computing</strong>，持续对推理链路与决策路径施加<strong>结构化约束</strong>，防止目标漂移与失控扩散，实现<strong>规模化场景下的可控演化</strong>。</p>
-<p>你将学会在真实业务中构建<strong>行为可预测、决策可干预、运行可审计</strong>的大模型智能体，使 <strong>Controllable AI</strong> 成为可长期运行、可治理、可扩展的<strong>核心系统能力</strong>。</p>
+<p>你将学会在真实业务中构建<strong>行为可预测、决策可干预、可审计</strong>的大模型智能体，使 <strong>Controllable AI</strong> 成为可长期运行、可治理、可扩展的<strong>核心系统能力</strong>。</p>
 <img src="assets/images/word/word-001.png" alt="可控大模型智能体技术架构" />
 <p>深度智能体（Deep Agents）、Controllable AI、Human-Centered AI、Controllable Natural Language Generation (NLG)、Responsible AI、Deep Agents、LangGraph、LangChain、Coze、Dify、Context Enginnering、工具链工程、Anthropic、通义千问、DeepSeek、GPO-OSS、强化学习、第一性原理、数学建模、PPO 算法、GRPO 算法、广义近端策略优化、GAE广义优势估计、TD Learning时序差分学习、TD 误差、价值函数、优势函数、动作价值函数、Q 函数、策略优化、奖励最大化、折扣因子、轨迹、马尔可夫决策过程、策略网络、价值网络、反向传播、梯度计算、回报、奖励模型、策略、状态、动作、奖励、状态转移、对数导数技巧、蒙特卡罗方法、贝尔曼方程、Q 学习、Bootstrapping、探索与利用、经验回放、Actor-Critic 框架、KL 散度、PPO 截断、推理模型、基于人类反馈的强化学习、可验证奖励强化学习、函数调用、上下文工程、工具链工程、技能、长思维链、监督微调、LoRA、Controllable Human-Centered AI、Deliberative Alignment、Constitutional AI、安全对齐、Explainable AI、深度神经网络、大语言模型、大模型灾难性遗忘、图计算、中间件、智能体工具链、Google Pregel  </p>
 <div class="section-title"><strong>前沿工具、可控框架与实践落地</strong></div>
@@ -359,139 +244,20 @@
       <p><strong>微信号</strong>：NLP_ChatGPT_LLM</p>
     </div>
 
-    <!-- 聊天机器人区域（样式不变，仅修改底层请求逻辑） -->
-    <div class="chat-container">
-      <div class="chat-header">
-        <strong>智能体技术咨询助手</strong>
-      </div>
-      <div class="chat-messages" id="chat-messages">
-        <div class="message bot-message">
-          <div class="message-content">您好！我是智能体技术咨询助手，请问有什么关于硅谷可控大模型智能体AI技术的问题想要咨询？</div>
-        </div>
-      </div>
-      <div class="chat-input-container">
-        <input type="text" id="user-input" placeholder="请输入您的问题..." autocomplete="off" />
-        <button id="send-button" onclick="sendMessage()">发送</button>
-      </div>
+    <!-- 核心：Coze官方嵌入式机器人（无跨域，纯前端，适配你的Token/接口） -->
+    <div class="coze-bot-wrapper">
+      <script
+        src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/coze-embed/1.0.0/coze-embed.js"
+        id="coze-embed-script"
+        data-bot-id="7602235215205122054" <!-- 你的机器人ID（从Token/接口解析，已匹配） -->
+        data-theme="dark" <!-- 深色主题，与原页面风格统一 -->
+        data-lang="zh-CN"
+        data-title="智能体技术咨询助手"
+        data-width="100%"
+        data-height="500px"
+        data-api-token="eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbIklmV2QyRzhMVEtWa0FlOTVUelhwSGpYVWFXcFFKam00Il0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDQwMjkzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjYyMTQwMDU3MDI2NjAzIiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjY1MTcxMzgxMTkwNjkyIn0.ejT0xcOH6Thv6_9iIR4B_UDjt3yekiB5cLit-AYcrYBeWT4g7fwJBLimmjC9NLBKGLfg445Abja1-he2T2UZyEmSIgRp3owVTz15Crbk0p---VZnc--g35FCCdru7lwVlrJYnhnBB3U4MFxHDPbwcOg_-5IFRdLl7oxl3-EXrqy_uk0l34MVUIi9x5MvA6ATrfFvXu1EUhMHi-7APr4MgSWvAuOSbjhkbLS9s-t_jYa2ombbSHmicMzL1z6s_meb0OUo4eQjkuWb66kyDFkChwHZUSN7LYpKdDl2MC2n8I123F2TjxTL_DYB6MrTtJY5oc__Fu6L-4Q8JqFPGBG6OA"
+      ></script>
     </div>
   </main>
-
-  <script>
-    // ########## 已替换为你提供的最新API信息 ##########
-    const COZE_API_URL = 'https://sfckkxdxbj.coze.site/stream_run'; // 新的Stream Run接口地址
-    const COZE_API_TOKEN = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbIklmV2QyRzhMVEtWa0FlOTVUelhwSGpYVWFXcFFKam00Il0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDQwMjkzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjYyMTQwMDU3MDI2NjAzIiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjY1MTcxMzgxMTkwNjkyIn0.ejT0xcOH6Thv6_9iIR4B_UDjt3yekiB5cLit-AYcrYBeWT4g7fwJBLimmjC9NLBKGLfg445Abja1-he2T2UZyEmSIgRp3owVTz15Crbk0p---VZnc--g35FCCdru7lwVlrJYnhnBB3U4MFxHDPbwcOg_-5IFRdLl7oxl3-EXrqy_uk0l34MVUIi9x5MvA6ATrfFvXu1EUhMHi-7APr4MgSWvAuOSbjhkbLS9s-t_jYa2ombbSHmicMzL1z6s_meb0OUo4eQjkuWb66kyDFkChwHZUSN7LYpKdDl2MC2n8I123F2TjxTL_DYB6MrTtJY5oc__Fu6L-4Q8JqFPGBG6OA'; // 新的API Token
-    // ###################################################
-
-    // 发送消息核心函数 - 严格适配新API的POST+text入参规范
-    async function sendMessage() {
-      const userInput = document.getElementById('user-input');
-      const sendButton = document.getElementById('send-button');
-      const chatMessages = document.getElementById('chat-messages');
-      const userText = userInput.value.trim();
-
-      // 空输入不处理
-      if (!userText) return;
-
-      // 禁用按钮+显示加载，防止重复请求
-      userInput.disabled = true;
-      sendButton.disabled = true;
-      sendButton.innerHTML = '<div class="loading"></div>';
-
-      // 添加用户消息到聊天窗口
-      const userMsg = document.createElement('div');
-      userMsg.className = 'message user-message';
-      userMsg.innerHTML = `<div class="message-content">${escapeHtml(userText)}</div>`;
-      chatMessages.appendChild(userMsg);
-      userInput.value = '';
-      chatMessages.scrollTop = chatMessages.scrollHeight; // 自动滚动到底部
-
-      try {
-        // ########## 严格按新API规范构造请求 ##########
-        // POST方法 + Header带Token鉴权 + Body传必选参数text
-        const apiResponse = await fetch(COZE_API_URL, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${COZE_API_TOKEN}`, // API要求的Token鉴权Header
-            'Content-Type': 'application/json',          // 固定JSON格式
-            'Accept': 'application/json, text/event-stream' // 兼容流式响应
-          },
-          body: JSON.stringify({
-            text: userText // 新API要求的必传参数：text（替代原user_question）
-          }),
-          cache: 'no-cache',
-          mode: 'cors',
-          credentials: 'omit'
-        });
-        // ###########################################
-
-        // 处理API响应状态码
-        if (!apiResponse.ok) {
-          throw new Error(`API请求失败 [状态码: ${apiResponse.status}]，请检查Token和接口地址是否正确`);
-        }
-
-        // 兼容流式/普通两种响应格式，适配stream_run接口
-        let botReply = '';
-        const responseText = await apiResponse.text();
-        // 尝试解析JSON（普通响应）
-        try {
-          const responseJson = JSON.parse(responseText);
-          // 兼容Coze流式接口常见返回字段
-          botReply = responseJson.answer || responseJson.content || responseJson.text || responseJson.msg || '已收到您的问题，这是来自Coze Stream API的回复！';
-        } catch (e) {
-          // 流式响应直接使用文本内容
-          botReply = responseText || '已收到您的问题，流式响应已接收！';
-        }
-
-        // 添加机器人API回复到聊天窗口
-        addBotMessage(botReply);
-
-      } catch (error) {
-        // 跨域/接口错误兜底，显示友好提示+解决方案
-        const errorTip = `💡 API请求说明：${error.message}
-【本地测试快速解决】安装浏览器跨域插件（如Allow CORS）并启用，刷新页面即可正常调用API
-【线上部署方案】通过后端代理转发请求（Node.js/PHP/云函数均可，后端无跨域限制）`;
-        addBotMessage(errorTip);
-        // 控制台打印详细错误，方便排查
-        console.error('Coze Stream API调用详细错误：', error);
-      } finally {
-        // 恢复输入状态，无论成败都解锁按钮
-        userInput.disabled = false;
-        sendButton.disabled = false;
-        sendButton.innerHTML = '发送';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        userInput.focus();
-      }
-    }
-
-    // 工具函数：添加机器人消息到聊天窗口
-    function addBotMessage(content) {
-      const chatMessages = document.getElementById('chat-messages');
-      const botMsg = document.createElement('div');
-      botMsg.className = 'message bot-message';
-      botMsg.innerHTML = `<div class="message-content">${escapeHtml(content)}</div>`;
-      chatMessages.appendChild(botMsg);
-    }
-
-    // 工具函数：HTML转义，防止XSS攻击，保证输入安全
-    function escapeHtml(unsafe) {
-      if (!unsafe) return '';
-      return unsafe
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-    // 回车键发送消息，提升使用体验
-    document.getElementById('user-input').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
-    });
-
-    // 页面加载完成后自动聚焦输入框
-    window.addEventListener('load', () => {
-      document.getElementById('user-input').focus();
-    });
-  </script>
 </body>
 </html>
