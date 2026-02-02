@@ -163,12 +163,143 @@
     .footer-contact strong {
       color: rgba(255, 255, 255, 0.96);
     }
+    /* 新增聊天机器人样式 */
+    .chat-container {
+      max-width: 800px;
+      margin: 40px auto 0;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(12, 14, 22, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .chat-header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .chat-header strong {
+      font-size: 20px;
+      color: rgba(0, 242, 255, 0.95);
+      text-shadow: 0 0 12px rgba(0, 242, 255, 0.2);
+    }
+    .chat-messages {
+      height: 400px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(5, 6, 11, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+    .chat-messages::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+    }
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: rgba(0, 242, 255, 0.3);
+      border-radius: 3px;
+    }
+    .message {
+      margin-bottom: 16px;
+      max-width: 85%;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .user-message {
+      margin-left: auto;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(0, 242, 255, 0.1));
+      padding: 12px 16px;
+      border-radius: 18px 18px 4px 18px;
+      border: 1px solid rgba(0, 242, 255, 0.2);
+    }
+    .bot-message {
+      margin-right: auto;
+      background: linear-gradient(135deg, rgba(188, 19, 254, 0.15), rgba(188, 19, 254, 0.08));
+      padding: 12px 16px;
+      border-radius: 18px 18px 18px 4px;
+      border: 1px solid rgba(188, 19, 254, 0.15);
+    }
+    .message-content {
+      word-wrap: break-word;
+      line-height: 1.6;
+    }
+    .chat-input-container {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    #user-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 50px;
+      background: rgba(5, 6, 11, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(238, 242, 255, 0.92);
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    #user-input:focus {
+      border-color: rgba(0, 242, 255, 0.4);
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.15);
+    }
+    #send-button {
+      padding: 14px 24px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.8), rgba(0, 210, 255, 0.6));
+      border: none;
+      color: #05060b;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    #send-button:hover {
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.9), rgba(0, 210, 255, 0.7));
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    }
+    #send-button:disabled {
+      background: rgba(255, 255, 255, 0.2);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
     @media (max-width: 900px) {
       img {
         max-width: 100%;
       }
       .page::before {
         inset: 14px 10px;
+      }
+      .chat-container {
+        margin: 20px 12px 0;
+        padding: 16px;
+      }
+      .chat-messages {
+        height: 300px;
+      }
+      #send-button {
+        padding: 12px 18px;
       }
     }
   </style>
@@ -233,6 +364,126 @@
     <div class="footer-contact">
       <p><strong>微信号</strong>：NLP_ChatGPT_LLM</p>
     </div>
+
+    <!-- 新增扣子对话机器人区域 -->
+    <div class="chat-container">
+      <div class="chat-header">
+        <strong>智能体技术咨询助手</strong>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="message bot-message">
+          <div class="message-content">您好！我是智能体技术咨询助手，请问有什么关于硅谷可控大模型智能体AI技术的问题想要咨询？</div>
+        </div>
+      </div>
+      <div class="chat-input-container">
+        <input type="text" id="user-input" placeholder="请输入您的问题..." autocomplete="off" />
+        <button id="send-button" onclick="sendMessage()">发送</button>
+      </div>
+    </div>
   </main>
+
+  <script>
+    // API配置
+    const API_URL = 'https://3yvzh36hrn.coze.site/run';
+    const API_TOKEN = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbInVHeFpDeVAwckdtT0xPYXF6SHQ3a1ZIT0p6Z2l5eExyIl0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDM2MzAzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjQ1NzY2NTE3NjIwNzU1Iiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjQ4MDM2MDg0ODc1MjkwIn0.CXNnGK005qtmzTxb_JIW6rPd4HkXc02eezdm59NfHhVLpoojrkMFdXAnOE5LxV5BhlhZNJJDH1xVKXRKsYT9-uu164x2eEyNKuVe70r3-DZsNA0VMNAzitiKBVk1DoLVONgKDY18jT3OmYAK6-TQtJUoKYvzGLwvPzU2jBHVbIiN6uNCC3DWYna2J-HhtsEgHSxHYhPHB6IlHPS773m5zqCyitIn_r1u39D1le1PkFFrRFyo9Wgpf65LTZxk70OLyj53tBEcMpo2xnizb8hVLEJ-eei7wNJDJfY37gibvmY3b-AE46eirQsGxGLqFKf2HUi97qW-EeWX4LyBm9xTSQ';
+
+    // 发送消息函数
+    async function sendMessage() {
+      const userInput = document.getElementById('user-input');
+      const sendButton = document.getElementById('send-button');
+      const chatMessages = document.getElementById('chat-messages');
+      
+      // 获取并清理用户输入
+      const question = userInput.value.trim();
+      if (!question) return;
+
+      // 禁用输入和按钮，防止重复发送
+      userInput.disabled = true;
+      sendButton.disabled = true;
+      sendButton.innerHTML = '<div class="loading"></div>';
+
+      // 添加用户消息到聊天窗口
+      const userMessage = document.createElement('div');
+      userMessage.className = 'message user-message';
+      userMessage.innerHTML = `<div class="message-content">${escapeHtml(question)}</div>`;
+      chatMessages.appendChild(userMessage);
+
+      // 清空输入框
+      userInput.value = '';
+      // 滚动到底部
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      try {
+        // 调用API
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${API_TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            user_question: question,
+            user_name: '',
+            user_email: '',
+            user_phone: ''
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`API请求失败: ${response.status}`);
+        }
+
+        const result = await response.json();
+        
+        // 添加机器人回复到聊天窗口
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot-message';
+        // 处理返回结果，兼容不同的返回格式
+        let replyContent = result.answer || result.response || result.message || '抱歉，我没有理解您的问题，请重新提问。';
+        botMessage.innerHTML = `<div class="message-content">${escapeHtml(replyContent)}</div>`;
+        chatMessages.appendChild(botMessage);
+
+      } catch (error) {
+        // 错误处理
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'message bot-message';
+        errorMessage.innerHTML = `<div class="message-content">抱歉，服务暂时不可用，请稍后再试。错误信息：${escapeHtml(error.message)}</div>`;
+        chatMessages.appendChild(errorMessage);
+        console.error('API调用错误:', error);
+      } finally {
+        // 恢复输入和按钮
+        userInput.disabled = false;
+        sendButton.disabled = false;
+        sendButton.innerHTML = '发送';
+        // 滚动到底部
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        // 聚焦输入框
+        userInput.focus();
+      }
+    }
+
+    // 转义HTML特殊字符，防止XSS
+    function escapeHtml(unsafe) {
+      if (!unsafe) return '';
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // 监听回车键发送消息
+    document.getElementById('user-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // 页面加载完成后聚焦输入框
+    window.addEventListener('load', function() {
+      document.getElementById('user-input').focus();
+    });
+  </script>
 </body>
 </html>
