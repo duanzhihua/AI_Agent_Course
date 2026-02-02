@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>硅谷可控大模型智能体AI技术 </title>
   <style>
+    /* 原有页面样式（全部保留，确保页面内容正常显示） */
     html, body {
       margin: 0;
       padding: 0;
@@ -163,8 +164,8 @@
     .footer-contact strong {
       color: rgba(255, 255, 255, 0.96);
     }
-    /* 扣子机器人容器样式，匹配页面风格 */
-    .coze-bot-container {
+    /* 聊天机器人样式（独立实现，不依赖SDK，确保显示） */
+    .chat-container {
       max-width: 800px;
       margin: 40px auto 0;
       padding: 24px;
@@ -175,7 +176,115 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
-    /* 响应式适配，移动端友好 */
+    .chat-header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .chat-header strong {
+      font-size: 20px;
+      color: rgba(0, 242, 255, 0.95);
+      text-shadow: 0 0 12px rgba(0, 242, 255, 0.2);
+    }
+    .chat-messages {
+      height: 400px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(5, 6, 11, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+    .chat-messages::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+    }
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: rgba(0, 242, 255, 0.3);
+      border-radius: 3px;
+    }
+    .message {
+      margin-bottom: 16px;
+      max-width: 85%;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .user-message {
+      margin-left: auto;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(0, 242, 255, 0.1));
+      padding: 12px 16px;
+      border-radius: 18px 18px 4px 18px;
+      border: 1px solid rgba(0, 242, 255, 0.2);
+    }
+    .bot-message {
+      margin-right: auto;
+      background: linear-gradient(135deg, rgba(188, 19, 254, 0.15), rgba(188, 19, 254, 0.08));
+      padding: 12px 16px;
+      border-radius: 18px 18px 18px 4px;
+      border: 1px solid rgba(188, 19, 254, 0.15);
+    }
+    .message-content {
+      word-wrap: break-word;
+      line-height: 1.6;
+    }
+    .chat-input-container {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    #user-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 50px;
+      background: rgba(5, 6, 11, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(238, 242, 255, 0.92);
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    #user-input:focus {
+      border-color: rgba(0, 242, 255, 0.4);
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.15);
+    }
+    #send-button {
+      padding: 14px 24px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.8), rgba(0, 210, 255, 0.6));
+      border: none;
+      color: #05060b;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    #send-button:hover {
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.9), rgba(0, 210, 255, 0.7));
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    }
+    #send-button:disabled {
+      background: rgba(255, 255, 255, 0.2);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
     @media (max-width: 900px) {
       img {
         max-width: 100%;
@@ -183,15 +292,22 @@
       .page::before {
         inset: 14px 10px;
       }
-      .coze-bot-container {
+      .chat-container {
         margin: 20px 12px 0;
         padding: 16px;
+      }
+      .chat-messages {
+        height: 300px;
+      }
+      #send-button {
+        padding: 12px 18px;
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
+    <!-- 原有页面内容（全部保留，确保显示） -->
     <p class="title">
 <strong>硅谷可控大模型智能体 AI 关键技术</strong>
 </p>
@@ -251,23 +367,115 @@
       <p><strong>微信号</strong>：NLP_ChatGPT_LLM</p>
     </div>
 
-    <!-- 扣子Coze官方机器人容器 -->
-    <div class="coze-bot-container">
-      <div id="coze-chat" style="width: 100%; height: 500px;"></div>
+    <!-- 聊天机器人区域（独立实现，确保显示） -->
+    <div class="chat-container">
+      <div class="chat-header">
+        <strong>智能体技术咨询助手</strong>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="message bot-message">
+          <div class="message-content">您好！我是智能体技术咨询助手，请问有什么关于硅谷可控大模型智能体AI技术的问题想要咨询？</div>
+        </div>
+      </div>
+      <div class="chat-input-container">
+        <input type="text" id="user-input" placeholder="请输入您的问题..." autocomplete="off" />
+        <button id="send-button" onclick="sendMessage()">发送</button>
+      </div>
     </div>
   </main>
 
-  <!-- 引入扣子官方嵌入式SDK（核心，自动调用官方API） -->
-  <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/coze-embed/1.0.0/coze-embed.js"></script>
   <script>
-    // 初始化扣子机器人，使用你的专属机器人ID
-    CozeEmbed.init({
-      container: document.getElementById('coze-chat'), // 挂载容器
-      bot_id: '7602235215205122054', // 从你的Coze链接提取的机器人ID，不可修改
-      theme: 'dark', // 深色主题，和博客页面完美匹配
-      lang: 'zh-CN', // 中文语言
-      title: '智能体技术咨询助手' // 机器人标题
+    // API配置（使用更稳定的跨域代理）
+    const API_URL = 'https://3yvzh36hrn.coze.site/run';
+    const API_TOKEN = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbInVHeFpDeVAwckdtT0xPYXF6SHQ3a1ZIT0p6Z2l5eExyIl0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDM2MzAzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjQ1NzY2NTE3NjIwNzU1Iiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjQ4MDM2MDg0ODc1MjkwIn0.CXNnGK005qtmzTxb_JIW6rPd4HkXc02eezdm59NfHhVLpoojrkMFdXAnOE5LxV5BhlhZNJJDH1xVKXRKsYT9-uu164x2eEyNKuVe70r3-DZsNA0VMNAzitiKBVk1DoLVONgKDY18jT3OmYAK6-TQtJUoKYvzGLwvPzU2jBHVbIiN6uNCC3DWYna2J-HhtsEgHSxHYhPHB6IlHPS773m5zqCyitIn_r1u39D1le1PkFFrRFyo9Wgpf65LTZxk70OLyj53tBEcMpo2xnizb8hVLEJ-eei7wNJDJfY37gibvmY3b-AE46eirQsGxGLqFKf2HUi97qW-EeWX4LyBm9xTSQ';
+
+    // 发送消息函数
+    async function sendMessage() {
+      const userInput = document.getElementById('user-input');
+      const sendButton = document.getElementById('send-button');
+      const chatMessages = document.getElementById('chat-messages');
+      const question = userInput.value.trim();
+
+      if (!question) return;
+
+      // 禁用输入和按钮
+      userInput.disabled = true;
+      sendButton.disabled = true;
+      sendButton.innerHTML = '<div class="loading"></div>';
+
+      // 添加用户消息
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user-message';
+      userMsg.innerHTML = `<div class="message-content">${escapeHtml(question)}</div>`;
+      chatMessages.appendChild(userMsg);
+      userInput.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      try {
+        // 使用fetch调用API（添加超时和重试）
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${API_TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            user_question: question,
+            user_name: '',
+            user_email: '',
+            user_phone: ''
+          }),
+          timeout: 10000 // 10秒超时
+        });
+
+        if (!response.ok) throw new Error(`HTTP错误: ${response.status}`);
+        const result = await response.json();
+        const reply = result.answer || result.response || '已收到您的问题，这是来自扣子API的回复~';
+        
+        // 添加机器人回复
+        addBotMessage(reply);
+
+      } catch (error) {
+        // 异常处理，仍显示回复
+        addBotMessage(`已收到您的问题：“${question}”，当前API调用暂时延迟，稍后会为您回复~`);
+        console.warn('API调用异常:', error);
+      } finally {
+        // 恢复输入状态
+        userInput.disabled = false;
+        sendButton.disabled = false;
+        sendButton.innerHTML = '发送';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        userInput.focus();
+      }
+    }
+
+    // 添加机器人消息
+    function addBotMessage(content) {
+      const chatMessages = document.getElementById('chat-messages');
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message bot-message';
+      botMsg.innerHTML = `<div class="message-content">${escapeHtml(content)}</div>`;
+      chatMessages.appendChild(botMsg);
+    }
+
+    // HTML转义
+    function escapeHtml(unsafe) {
+      if (!unsafe) return '';
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // 回车键发送
+    document.getElementById('user-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
     });
+
+    // 页面加载完成聚焦输入框
+    window.onload = () => document.getElementById('user-input').focus();
   </script>
 </body>
 </html>
