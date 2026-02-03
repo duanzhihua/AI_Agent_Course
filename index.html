@@ -252,16 +252,50 @@
       <div style="font-size: 14px; color: rgba(238, 242, 255, 0.75); margin-bottom: 12px; text-align: center;">
         关于大模型智能体的任何问题，随时问我！
       </div>
-      <script
-        src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/coze-embed/1.0.0/coze-embed.js"
-        id="coze-embed-script"
-        data-bot-id="7602235215205122054"
-        data-theme="dark"
-        data-lang="zh-CN"
-        data-width="100%"
-        data-height="500px"
-        data-api-token="eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbIklmV2QyRzhMVEtWa0FlOTVUelhwSGpYVWFXcFFKam00Il0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDQwMjkzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjYyMTQwMDU3MDI2NjAzIiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjY1MTcxMzgxMTkwNjkyIn0.ejT0xcOH6Thv6_9iIR4B_UDjt3yekiB5cLit-AYcrYBeWT4g7fwJBLimmjC9NLBKGLfg445Abja1-he2T2UZyEmSIgRp3owVTz15Crbk0p---VZnc--g35FCCdru7lwVlrJYnhnBB3U4MFxHDPbwcOg_-5IFRdLl7oxl3-EXrqy_uk0l34MVUIi9x5MvA6ATrfFvXu1EUhMHi-7APr4MgSWvAuOSbjhkbLS9s-t_jYa2ombbSHmicMzL1z6s_meb0OUo4eQjkuWb66kyDFkChwHZUSN7LYpKdDl2MC2n8I123F2TjxTL_DYB6MrTtJY5oc__Fu6L-4Q8JqFPGBG6OA"
-      ></script>
+      <!-- 备用方案：如果Coze加载失败，显示手动咨询入口 -->
+      <div id="coze-bot-container">
+        <script
+          src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/coze-embed/1.0.0/coze-embed.js"
+          id="coze-embed-script"
+          data-bot-id="7602235215205122054"
+          data-theme="dark"
+          data-lang="zh-CN"
+          data-width="100%"
+          data-height="500px"
+          data-api-token="eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbIklmV2QyRzhMVEtWa0FlOTVUelhwSGpYVWFXcFFKam00Il0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDQwMjkzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjYyMTQwMDU3MDI2NjAzIiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjY1MTcxMzgxMTkwNjkyIn0.ejT0xcOH6Thv6_9iIR4B_UDjt3yekiB5cLit-AYcrYBeWT4g7fwJBLimmjC9NLBKGLfg445Abja1-he2T2UZyEmSIgRp3owVTz15Crbk0p---VZnc--g35FCCdru7lwVlrJYnhnBB3U4MFxHDPbwcOg_-5IFRdLl7oxl3-EXrqy_uk0l34MVUIi9x5MvA6ATrfFvXu1EUhMHi-7APr4MgSWvAuOSbjhkbLS9s-t_jYa2ombbSHmicMzL1z6s_meb0OUo4eQjkuWb66kyDFkChwHZUSN7LYpKdDl2MC2n8I123F2TjxTL_DYB6MrTtJY5oc__Fu6L-4Q8JqFPGBG6OA"
+        ></script>
+      </div>
+      <div id="coze-fallback" style="display: none; text-align: center; padding: 40px; color: rgba(238, 242, 255, 0.75);">
+        <div style="font-size: 24px; margin-bottom: 16px; 🤖">
+          🤖
+        </div>
+        <div style="font-size: 16px; margin-bottom: 12px; font-weight: 600;">
+          对话机器人加载失败
+        </div>
+        <div style="font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
+          您可以通过以下方式获取AI智能体技术咨询：
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 280px; margin: 0 auto;">
+          <a href="https://github.com/duanzhihua/AI_Agent_Course/issues" target="_blank" style="padding: 12px 16px; background: rgba(0, 242, 255, 0.12); border: 1px solid rgba(0, 242, 255, 0.35); border-radius: 12px; color: rgba(0, 242, 255, 0.95); text-decoration: none; font-size: 14px; transition: all 0.3s;">
+            GitHub Issues提问
+          </a>
+          <a href="javascript:window.location.reload()" style="padding: 12px 16px; background: rgba(188, 19, 254, 0.12); border: 1px solid rgba(188, 19, 254, 0.35); border-radius: 12px; color: rgba(188, 19, 254, 0.95); text-decoration: none; font-size: 14px; transition: all 0.3s;">
+            刷新页面重试
+          </a>
+        </div>
+      </div>
+      <script>
+        // 检测Coze机器人加载状态
+        setTimeout(() => {
+          const container = document.getElementById('coze-bot-container');
+          const fallback = document.getElementById('coze-fallback');
+          if (container && fallback && container.children.length <= 1) {
+            // 没有加载成功，显示备用方案
+            container.style.display = 'none';
+            fallback.style.display = 'block';
+          }
+        }, 5000);
+      </script>
     </div>
   </main>
 </body>
