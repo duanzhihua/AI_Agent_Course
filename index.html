@@ -244,7 +244,7 @@
       <p><strong>微信号</strong>：NLP_ChatGPT_LLM</p>
     </div>
 
-    <!-- AI智能体对话助手 - 深度适配本课程内容 -->
+    <!-- AI智能体对话助手 - 完全自主实现，无外部依赖 -->
     <div class="coze-bot-wrapper">
       <div style="margin-bottom: 16px; text-align: center; font-size: 18px; font-weight: 600; color: rgba(0, 242, 255, 0.95);">
         🤖 AI智能体技术咨询助手
@@ -252,49 +252,122 @@
       <div style="font-size: 14px; color: rgba(238, 242, 255, 0.75); margin-bottom: 12px; text-align: center;">
         关于大模型智能体的任何问题，随时问我！
       </div>
-      <!-- 备用方案：如果Coze加载失败，显示手动咨询入口 -->
-      <div id="coze-bot-container">
-        <script
-          src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/coze-embed/1.0.0/coze-embed.js"
-          id="coze-embed-script"
-          data-bot-id="7602235215205122054"
-          data-theme="dark"
-          data-lang="zh-CN"
-          data-width="100%"
-          data-height="500px"
-          data-api-token="eyJhbGciOiJSUzI1NiIsImtpZCI6IjM0MmEyMzU0LTI5ODgtNGJkYi04N2ViLTU1MjliYmJkMmVlZCJ9.eyJpc3MiOiJodHRwczovL2FwaS5jb3plLmNuIiwiYXVkIjpbIklmV2QyRzhMVEtWa0FlOTVUelhwSGpYVWFXcFFKam00Il0sImV4cCI6ODIxMDI2Njg3Njc5OSwiaWF0IjoxNzcwMDQwMjkzLCJzdWIiOiJzcGlmZmU6Ly9hcGkuY296ZS5jbi93b3JrbG9hZF9pZGVudGl0eS9pZDo3NjAyMjYyMTQwMDU3MDI2NjAzIiwic3JjIjoiaW5ib3VuZF9hdXRoX2FjY2Vzc190b2tlbl9pZDo3NjAyMjY1MTcxMzgxMTkwNjkyIn0.ejT0xcOH6Thv6_9iIR4B_UDjt3yekiB5cLit-AYcrYBeWT4g7fwJBLimmjC9NLBKGLfg445Abja1-he2T2UZyEmSIgRp3owVTz15Crbk0p---VZnc--g35FCCdru7lwVlrJYnhnBB3U4MFxHDPbwcOg_-5IFRdLl7oxl3-EXrqy_uk0l34MVUIi9x5MvA6ATrfFvXu1EUhMHi-7APr4MgSWvAuOSbjhkbLS9s-t_jYa2ombbSHmicMzL1z6s_meb0OUo4eQjkuWb66kyDFkChwHZUSN7LYpKdDl2MC2n8I123F2TjxTL_DYB6MrTtJY5oc__Fu6L-4Q8JqFPGBG6OA"
-        ></script>
+      
+      <!-- 完全自主实现的聊天界面，无外部依赖 -->
+      <div style="background: rgba(0, 0, 0, 0.35); border-radius: 12px; overflow: hidden; height: 500px; display: flex; flex-direction: column;">
+        <!-- 聊天记录区域 -->
+        <div id="chat-messages" style="flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;">
+          <!-- 欢迎消息 -->
+          <div style="display: flex; justify-content: flex-start;">
+            <div style="background: rgba(0, 242, 255, 0.15); border: 1px solid rgba(0, 242, 255, 0.35); border-radius: 12px 12px 12px 4px; padding: 10px 14px; max-width: 75%;">
+              <div style="font-size: 14px; color: rgba(238, 242, 255, 0.95); line-height: 1.6;">
+                你好！我是AI智能体技术咨询助手，专注回答大模型智能体领域的专业问题。请问你有什么问题？
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 输入区域 -->
+        <div style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding: 12px; display: flex; gap: 8px;">
+          <input 
+            type="text" 
+            id="chat-input" 
+            placeholder="输入你的问题..." 
+            style="flex: 1; padding: 10px 14px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 12px; color: rgba(238, 242, 255, 0.95); font-size: 14px; outline: none; transition: border-color 0.3s;"
+          />
+          <button 
+            id="chat-send" 
+            style="padding: 10px 20px; background: linear-gradient(135deg, rgba(0, 242, 255, 0.35), rgba(188, 19, 254, 0.25)); border: 1px solid rgba(0, 242, 255, 0.35); border-radius: 12px; color: rgba(255, 255, 255, 0.95); font-size: 14px; cursor: pointer; transition: all 0.3s;"
+          >
+            发送
+          </button>
+        </div>
       </div>
-      <div id="coze-fallback" style="display: none; text-align: center; padding: 40px; color: rgba(238, 242, 255, 0.75);">
-        <div style="font-size: 24px; margin-bottom: 16px; 🤖">
-          🤖
-        </div>
-        <div style="font-size: 16px; margin-bottom: 12px; font-weight: 600;">
-          对话机器人加载失败
-        </div>
-        <div style="font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
-          您可以通过以下方式获取AI智能体技术咨询：
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 280px; margin: 0 auto;">
-          <a href="https://github.com/duanzhihua/AI_Agent_Course/issues" target="_blank" style="padding: 12px 16px; background: rgba(0, 242, 255, 0.12); border: 1px solid rgba(0, 242, 255, 0.35); border-radius: 12px; color: rgba(0, 242, 255, 0.95); text-decoration: none; font-size: 14px; transition: all 0.3s;">
-            GitHub Issues提问
-          </a>
-          <a href="javascript:window.location.reload()" style="padding: 12px 16px; background: rgba(188, 19, 254, 0.12); border: 1px solid rgba(188, 19, 254, 0.35); border-radius: 12px; color: rgba(188, 19, 254, 0.95); text-decoration: none; font-size: 14px; transition: all 0.3s;">
-            刷新页面重试
-          </a>
-        </div>
-      </div>
+      
+      <!-- 聊天功能实现 -->
       <script>
-        // 检测Coze机器人加载状态
-        setTimeout(() => {
-          const container = document.getElementById('coze-bot-container');
-          const fallback = document.getElementById('coze-fallback');
-          if (container && fallback && container.children.length <= 1) {
-            // 没有加载成功，显示备用方案
-            container.style.display = 'none';
-            fallback.style.display = 'block';
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+        
+        // 智能体问题处理函数
+        function handleAgentQuestion(question) {
+          // 常见智能体问题回答
+          const knowledgeBase = {
+            "什么是大模型智能体": "大模型智能体是基于大语言模型构建的自主智能系统，能够感知环境、制定计划、执行任务并学习优化。",
+            "智能体的核心技术": "智能体核心技术包括思维链（CoT）、工具调用、长期记忆、任务规划、多智能体协作等。",
+            "智能体与普通大模型的区别": "普通大模型主要做文本生成，而智能体具备自主决策、工具使用、长期记忆和任务执行能力。",
+            "智能体的应用场景": "智能体广泛应用于自动驾驶、客服机器人、代码生成、科学研究、金融分析等领域。",
+            "如何构建智能体": "构建智能体需要大模型基础、任务规划框架、工具集成系统、记忆管理模块和评估机制。",
+            "强化学习在智能体中的作用": "强化学习通过奖励机制训练智能体优化决策，使其在复杂环境中做出更优选择。",
+            "智能体的发展趋势": "未来智能体将向多模态、自主进化、多智能体协作、边缘部署和伦理对齐方向发展。"
+          };
+          
+          // 匹配问题（简单关键词匹配）
+          for (const [key, answer] of Object.entries(knowledgeBase)) {
+            if (question.includes(key) || key.includes(question)) {
+              return answer;
+            }
           }
-        }, 5000);
+          
+          // 通用回答
+          return `感谢你的问题！关于“${question}”，这是一个很好的智能体领域话题。由于这是演示版本，建议你通过GitHub Issues提交详细问题（https://github.com/duanzhihua/AI_Agent_Course/issues），获取更专业的解答。`;
+        }
+        
+        // 添加消息到聊天界面
+        function addMessage(text, isUser = false) {
+          const messageDiv = document.createElement('div');
+          messageDiv.style.display = 'flex';
+          messageDiv.style.justifyContent = isUser ? 'flex-end' : 'flex-start';
+          
+          const contentDiv = document.createElement('div');
+          contentDiv.style.padding = '10px 14px';
+          contentDiv.style.borderRadius = isUser ? '12px 12px 4px 12px' : '12px 12px 12px 4px';
+          contentDiv.style.maxWidth = '75%';
+          contentDiv.style.fontSize = '14px';
+          contentDiv.style.lineHeight = '1.6';
+          
+          if (isUser) {
+            contentDiv.style.background = 'rgba(188, 19, 254, 0.15)';
+            contentDiv.style.border = '1px solid rgba(188, 19, 254, 0.35)';
+            contentDiv.style.color = 'rgba(238, 242, 255, 0.95)';
+          } else {
+            contentDiv.style.background = 'rgba(0, 242, 255, 0.15)';
+            contentDiv.style.border = '1px solid rgba(0, 242, 255, 0.35)';
+            contentDiv.style.color = 'rgba(238, 242, 255, 0.95)';
+          }
+          
+          contentDiv.innerHTML = text;
+          messageDiv.appendChild(contentDiv);
+          chatMessages.appendChild(messageDiv);
+          
+          // 滚动到底部
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // 发送消息
+        function sendMessage() {
+          const question = chatInput.value.trim();
+          if (!question) return;
+          
+          // 添加用户消息
+          addMessage(question, true);
+          chatInput.value = '';
+          
+          // 模拟思考延迟
+          setTimeout(() => {
+            const answer = handleAgentQuestion(question);
+            addMessage(answer, false);
+          }, 800);
+        }
+        
+        // 绑定事件
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            sendMessage();
+          }
+        });
       </script>
     </div>
   </main>
